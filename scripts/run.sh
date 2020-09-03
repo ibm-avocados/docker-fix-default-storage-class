@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DEFAULT=$(kubectl get sc | grep "(default)" | awk {'print $1'})
+
 ibmcloud plugin install -f kubernetes-service
 sleep 20
 ibmcloud login --apikey $1 -r "us-south"
@@ -14,6 +16,9 @@ sleep 3
 helm install 1.6.0 iks-charts/ibmcloud-block-storage-plugin -n kube-system
 sleep 5
 # Make the IBM Cloud Block Storage the default `storageclass`
-kubectl patch storageclass ibmc-block-gold -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
-sleep 5
-kubectl patch storageclass ibmc-file-bronze -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+
+if [ ${DEFAULT} != "ibmc-block-gold" ]; then
+  kubectl patch storageclass ibmc-block-gold -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+  sleep 5
+  kubectl patch storageclass ${DEFAULT} -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+fi
