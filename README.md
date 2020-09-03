@@ -8,7 +8,7 @@ This should fix the default storage class so we can write to the shared PVCs.
 
 **EXAMPLE**:
 ```
-docker run quay.io/awesome/docker-fix-default-storage-class:latest "APIKEY" "CLUSTER"
+docker run quay.io/ibm-avocados/docker-fix-default-storage-class:latest "APIKEY" "CLUSTER"
 ```
 
 ## License & Authors
