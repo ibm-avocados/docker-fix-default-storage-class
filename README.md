@@ -6,8 +6,9 @@ This should fix the default storage class so we can write to the shared PVCs.
 
 ## Usage
 
-```bash
-ansible-playbook -u 'admini' -i hosts playbooks/main.yml
+**EXAMPLE**:
+```
+docker run quay.io/awesome/docker-fix-default-storage-class:latest "APIKEY" "CLUSTER"
 ```
 
 ## License & Authors
