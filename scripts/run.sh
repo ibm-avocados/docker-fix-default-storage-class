@@ -17,7 +17,7 @@ helm install 1.6.0 iks-charts/ibmcloud-block-storage-plugin -n kube-system
 sleep 5
 # Make the IBM Cloud Block Storage the default `storageclass`
 
-if [ ${DEFAULT} != "ibmc-block-gold" ]; then
+if [[ ${DEFAULT} != "ibmc-block-gold" ]]; then
   kubectl patch storageclass ibmc-block-gold -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
   sleep 5
   kubectl patch storageclass ${DEFAULT} -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
