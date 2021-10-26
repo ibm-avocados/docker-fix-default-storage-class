@@ -13,7 +13,7 @@ docker run quay.io/ibm-avocados/docker-fix-default-storage-class:latest "APIKEY"
 
 ## License & Authors
 
-If you would like to see the detailed LICENCE click [here](./LICENCE).
+If you would like to see the detailed LICENSE click [here](./LICENCE).
 
 - Author: JJ Asghar <awesome@ibm.com>
 
